@@ -46,25 +46,25 @@ MCP는 AI 모델이 외부 시스템과 상호작용하는 과정을 표준화�
 
 본 플랫폼은 아래와 같은 아키텍처로 구성됩니다.
 
-```
+```mermaid
 graph TD
     subgraph Browser
-        A[👤 User]
+        A[User 👤]
     end
 
     subgraph Frontend
         B[React / Next.js]
     end
     
-    subgraph Backend [Backend Server]
+    subgraph BackendServer["Backend Server"]
         C{Spring Boot API Gateway}
         D[Agent Executor (LangChain4j)]
         E[(DB: PostgreSQL)]
     end
 
-    subgraph External Services
-        F[🛠️ External Tools (APIs, DBs)]
-        G[🧠 LLM API (OpenAI, etc.)]
+    subgraph ExternalServices["External Services"]
+        F[External Tools (APIs, DBs) 🛠️]
+        G[LLM API (OpenAI, etc.) 🧠]
     end
     
     A -- HTTP Request --> B
