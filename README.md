@@ -46,7 +46,7 @@ MCP는 AI 모델이 외부 시스템과 상호작용하는 과정을 표준화�
 
 본 플랫폼은 아래와 같은 아키텍처로 구성됩니다.
 
-```mermaid
+```
 graph TD
     subgraph Browser
         A[👤 User]
