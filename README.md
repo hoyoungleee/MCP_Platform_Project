@@ -49,35 +49,36 @@ MCP는 AI 모델이 외부 시스템과 상호작용하는 과정을 표준화�
 ```mermaid
 graph TD
     subgraph Browser
-        A[User 👤]
+        A[User]
     end
 
     subgraph Frontend
         B[React / Next.js]
     end
     
-    subgraph BackendServer["Backend Server"]
+    subgraph Backend_Server
         C{Spring Boot API Gateway}
-        D[Agent Executor (LangChain4j)]
-        E[(DB: PostgreSQL)]
+        D[Agent Executor - LangChain4j]
+        E[(PostgreSQL DB)]
     end
 
-    subgraph ExternalServices["External Services"]
-        F[External Tools (APIs, DBs) 🛠️]
-        G[LLM API (OpenAI, etc.) 🧠]
+    subgraph External_Services
+        F[External Tools - APIs, DBs]
+        G[LLM API - OpenAI, etc.]
     end
     
     A -- HTTP Request --> B
     B -- REST API Call --> C
     C -- Forward Request --> D
-    D -- 1. Get Tool Info --> E
-    D -- 2. Execute Tool --> F
-    F -- 3. Return Result --> D
-    D -- 4. Think with LLM --> G
-    G -- 5. Return Thought --> D
-    D -- 6. Generate Final Answer --> C
+    D -- Get Tool Info --> E
+    D -- Execute Tool --> F
+    F -- Return Result --> D
+    D -- Think with LLM --> G
+    G -- Return Thought --> D
+    D -- Generate Final Answer --> C
     C -- Log Interaction --> E
     C -- API Response --> B
+
 ```
 
 ## 🛠️ 기술 스택 (Tech Stack)
