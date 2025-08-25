@@ -58,7 +58,7 @@ graph TD
     
     subgraph Backend [Backend Server]
         C{Spring Boot API Gateway}
-        D[🤖 Agent Executor (LangChain4j)]
+        D[Agent Executor (LangChain4j)]
         E[(DB: PostgreSQL)]
     end
 
