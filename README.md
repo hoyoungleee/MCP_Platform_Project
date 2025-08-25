@@ -90,18 +90,39 @@ graph TD
 | **Database** | `PostgreSQL` | 신뢰성 높은 관계형 데이터 저장 및 관리 |
 | **Deployment**| `Docker`, `AWS/GCP` | 컨테이너 기반의 일관성 있는 배포 및 확장성 확보 |
 
-## 🚀 앞으로의 개발 계획 (Roadmap)
+## 🚀 개발 계획 및 작업 목록 (Roadmap & Tasks)
 
-- [ ] **Phase 1: MVP 개발**
-  - [ ] 단일 Tool 등록 및 테스트 기능 구현
-  - [ ] 단일 Agent 생성 및 Tool 연결 기능 구현
-  - [ ] 간단한 1-Step 작업 실행 및 로그 확인 기능
+### Phase 1: MVP 개발
+가장 핵심적인 기능을 구현하는 첫 번째 개발 단계입니다.
 
-- [ ] **Phase 2: 기능 고도화**
-  - [ ] 다중 Tool을 순차적으로 사용하는 Multi-Step 워크플로우 지원
-  - [ ] Vector DB를 연동한 RAG(Retrieval-Augmented Generation) 기능 추가
-  - [ ] 사용자 인증/인가 시스템 도입
+- **1. 💻 개발 환경 설정 (Setup)**
+  - `Spring Boot` 프로젝트 생성 (Spring Web, Data JPA, Lombok, PostgreSQL Driver)
+  - `PostgreSQL` 연동 및 `LangChain4j` 라이브러리 의존성 추가
+  - `OpenAI` API Key 등 환경 변수 설정
+  - `Git` 버전 관리 시작
 
-- [ ] **Phase 3: 사용성 개선**
-  - [ ] GUI 기반의 워크플로우 빌더 도입
-  - [ ] 대시보드를 통한 에이전트 사용 통계 및 모니터링 기능 강화
+- **2. 🔧 도메인 모델링 및 DB 설계 (Modeling)**
+  - `ToolEntity`, `AgentEntity` 엔티티 클래스 생성
+  - Spring Data JPA `Repository` 인터페이스 생성
+
+- **3. 🛠️ API 구현: 도구(Tool) 관리**
+  - `POST /tools` : 새 도구 등록 API
+  - `GET /tools` : 등록된 도구 목록 조회 API
+
+- **4. 🤖 AI 에이전트 실행 로직 구현 (Core Logic)**
+  - `AgentService` 클래스 설계
+  - `LangChain4j`를 사용하여 Tool 호출 결정 로직 구현
+  - `WebClient` 또는 `RestTemplate`을 사용한 실제 Tool API 호출 로직 구현
+  - Tool 실행 결과를 바탕으로 LLM이 최종 답변을 생성하는 로직 구현
+
+- **5. 🚀 API 구현: 에이전트 실행**
+  - `POST /agents/{agentId}/chat` : 에이전트에게 작업을 요청하고 응답을 받는 API
+
+### Phase 2: 기능 고도화
+- [ ] 다중 Tool을 순차적으로 사용하는 Multi-Step 워크플로우 지원
+- [ ] Vector DB를 연동한 RAG(Retrieval-Augmented Generation) 기능 추가
+- [ ] 사용자 인증/인가 시스템 도입
+
+### Phase 3: 사용성 개선
+- [ ] GUI 기반의 워크플로우 빌더 도입
+- [ ] 대시보드를 통한 에이전트 사용 통계 및 모니터링 기능 강화
